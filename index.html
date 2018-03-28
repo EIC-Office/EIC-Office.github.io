@@ -147,13 +147,13 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/26/hello-world/">
-                Hello World
+            <a href="/2018/03/28/Vim笔记/">
+                Untitled
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2018-03-26</span>
+                <span class="date">2018-03-28</span>
             
             
             
@@ -162,15 +162,210 @@
 
     
         <div class="content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h1 id="vim笔记"><a href="#vim笔记" class="headerlink" title="vim笔记"></a>vim笔记</h1><hr>
+<p><strong>安装配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">安装vim 命令:sudo apk-get install vim-gtk</span><br><span class="line">配置vim 命令:sudo vim /etc/vim/vimrc(对vimrc文件编辑)</span><br><span class="line">	1.打开高亮:检查syntax on是否被注释，如果注释，解注释.</span><br><span class="line">	2.左侧行号:set nu</span><br><span class="line">	3.tab长度设置为4:set tabstop</span><br><span class="line">	4.覆盖文件时不备份:set nobackup</span><br><span class="line">	5.突出显示当前行:set cursorline</span><br><span class="line">	6.在右下角显示光标位置的状态行:set ruler</span><br><span class="line">	7.自动缩进:set autoindent</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>操作命令</strong></p>
+<p>######保存与退出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Esc:退出当前状态，进入命令模式</span><br><span class="line">w:写入文件</span><br><span class="line">w file:另存为</span><br><span class="line">w!:强制保存，不退出</span><br><span class="line">wq:保存文件并退出</span><br><span class="line">ZZ:保存文件并退出</span><br><span class="line">wq!:强制保存文件，并退出</span><br><span class="line">q:不保存文件，退出</span><br><span class="line">q!:不保存文件强制退出</span><br><span class="line">e!:放弃所有修改，从上次保存文件开始编辑</span><br></pre></td></tr></table></figure></p>
+<p>######光标跳转<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">v:与正常鼠标操作相似，光标经过地方会被选中</span><br><span class="line">V:光标经过的行会被选中</span><br><span class="line">ctrl v:选中光标起始与终点的矩形区域</span><br><span class="line">gg:光标跳到第一行行首</span><br><span class="line">G:光标跳到最后一行行首</span><br><span class="line">numG:光标跳转到第num行</span><br><span class="line">%:括号的寻找与跳转</span><br><span class="line">num%:按百分比跳转到相应位置</span><br><span class="line">$:移动到行尾</span><br><span class="line">^:移动到行首(非空白字符)</span><br><span class="line">0:移动到行首</span><br><span class="line">/字符串:查找字符串</span><br><span class="line">n:查找下一个</span><br><span class="line">numn:查找接下来第三个</span><br><span class="line">/^字符串:查找行首字符串</span><br><span class="line">/字符串$:查找行尾字符串</span><br><span class="line">/\.:查找特殊字符时用转移方法</span><br></pre></td></tr></table></figure></p>
+<p>######复制粘贴<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y:复制到寄存器</span><br><span class="line">yy:复制行到寄存器</span><br><span class="line">p:从寄存器粘贴</span><br><span class="line">&quot;+y:复制到系统剪贴板</span><br><span class="line">&quot;+p:从系统剪贴板粘贴</span><br></pre></td></tr></table></figure></p>
+<p>######编辑操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x:删除字符</span><br><span class="line">dd:删除整行</span><br><span class="line">D:删除光标后该行剩下内容</span><br><span class="line">J:将下一行与本行合并空格隔开</span><br><span class="line">u:撤销</span><br><span class="line">U:重做(撤销撤销)</span><br><span class="line">ctrl R:同上</span><br><span class="line">i:进入insret模式</span><br><span class="line">a:进入insert模式(光标会向后移动一位)</span><br><span class="line">o:下面另起一行(进入insert模式)</span><br><span class="line">O:上面另起一行(进入insert模式)</span><br><span class="line">c:等同于delete与insert之和</span><br><span class="line">cc:修改整行内容</span><br></pre></td></tr></table></figure></p>
+<p>######浏览操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctrl D:向下滚动半屏</span><br><span class="line">ctrl U:向上滚动半屏</span><br><span class="line">ctrl F:向下滚动一屏</span><br><span class="line">ctrl B:向上滚动一屏</span><br><span class="line">ctrl E:向下滚动一行</span><br><span class="line">ctrl Y:向上滚动一行</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/28/GitNotes/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-28</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="git-Notes"><a href="#git-Notes" class="headerlink" title="git Notes"></a>git Notes</h2><h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">官网下载安装</a></p>
+<h4 id="2-设置用户名与邮箱"><a href="#2-设置用户名与邮箱" class="headerlink" title="2.设置用户名与邮箱"></a>2.设置用户名与邮箱</h4><p>在Git Bush中输入命令修改用户名与邮箱<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;用户名&quot;</span><br><span class="line">$ git config --global user.email &quot;邮箱&quot;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-创建版本库"><a href="#3-创建版本库" class="headerlink" title="3.创建版本库"></a>3.创建版本库</h4><p>到你所选择的目录下创建一个空目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir 目录名</span><br><span class="line">$ cd 目录名</span><br></pre></td></tr></table></figure></p>
+<p>初始化该目录为Git管理的仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in F:/Repository/Diantask/.git/</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-将文件添加到版本库"><a href="#4-将文件添加到版本库" class="headerlink" title="4.将文件添加到版本库"></a>4.将文件添加到版本库</h4><p><strong>1.将文件放到仓库目录下</strong></p>
+<p><strong>2.将文件添加到暂存区</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add 文件名</span><br></pre></td></tr></table></figure>
+<p>此时文件有三种状态</p>
+<ul>
+<li>Untracked files:文件未被暂存</li>
+<li>Changes to be committed:文件已被暂存</li>
+<li>Changes bu not updated:已暂存过，但文件被修改还未暂存</li>
+</ul>
+<p><strong>3.将文件提交到仓库</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git commit:提交暂存区里的内容</span><br><span class="line">$ git commit -a:提交暂存区里的内容与Changes bu not updated的文件</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.编辑更新描述</strong></p>
+<ul>
+<li><p>在执行完上述命令后，会进入编辑器编辑描述内容，默认进入nano编辑器，如需修改默认编辑器，使用下述命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global core.editor 编辑器名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以通过如下命令简化该过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;描述内容&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>5.修改提交内容</strong></p>
+<ul>
+<li><p>修改最后一次提交内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改历史提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git rebase -i 提交:将相应的提交当作最后一次提交</span><br><span class="line">将pick修改为edit保存并退出</span><br><span class="line">$ git commit --amend:修改提交内容</span><br><span class="line">$ git rebase --continue:将提交顺序恢复</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将远程仓库合并到当前分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>6.查看仓库状态</strong></p>
+<ul>
+<li><p>查看状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看详细修改信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff 文件名</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>7.退回到历史版本</strong></p>
+<ul>
+<li><p>查看提交历史(查询commit ID)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看命令历史(查询commit ID)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回到历史版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 版本/commit ID</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HEAD^:上一个版本</span><br><span class="line">HEAD^^:上上一个版本</span><br></pre></td></tr></table></figure>
+<p><strong>8.撤销修改</strong></p>
+<ul>
+<li><p>(未add)舍弃工作区的修改，回到上次commit或add的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- 文件名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(add后)把暂存区的修改撤销掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD 文件名</span><br><span class="line">$ git checkout -- 文件名</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>9.删除文件</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm 文件名</span><br><span class="line">$ git commit</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-远程仓库"><a href="#5-远程仓库" class="headerlink" title="5.远程仓库"></a>5.远程仓库</h4><ul>
+<li><p>生成SSH Key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将SSH添加到GitHub的SSH Key</p>
+</li>
+<li><p>添加远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add 远程库简称 git@github.com:GitHub用户名/分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若远程库已存在，可以将之前的关联删除再关联新远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm origin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交到远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u 远程库简称 master</span><br><span class="line">$ git push 远程库简称 master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从远程库克隆到本地目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:GitHub用户名/远程库</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="6-分支管理"><a href="#6-分支管理" class="headerlink" title="6.分支管理"></a>6.分支管理</h4><ul>
+<li><p>基本操作</p>
+<ul>
+<li><p>列出所有分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch 分支名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d 分支名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout 分支名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并指定分支到当前分支(直接指针跳转”快进模式”没有commit)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge 分支名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并指定分支到当前分支(禁用”快进模式”会生成commit)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge --no-ff -m &quot;描述文本&quot; dev</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Dug分支<br>当你正在对某一分支做修改时，需要立即进行另一个文件操作，此时需要暂存当前修改，而不影响其他操作</p>
+<ul>
+<li><p>将当前分支编辑的工作隐藏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看隐藏工作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>隐藏内容恢复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git stash apply</span><br><span class="line">$ git stash apply stash@&#123;num&#125;:恢复指定隐藏工作</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清楚隐藏工作列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash drop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复隐藏工作并清楚隐藏工作列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Feature分支<br>开发新功能</p>
+<ul>
+<li>使用上述功能进行操作与合并</li>
+<li><p>强行删除分支未同步的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D 分支名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支已同步的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d 分支名称</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-标签管理"><a href="#7-标签管理" class="headerlink" title="7.标签管理"></a>7.标签管理</h4><p>所有标签都储存在本地，不会自动推送到远程</p>
+<ul>
+<li><p>查看所有标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为当前分支打标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag 标签</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为commid ID打标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag 标签 commit ID</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>附加说明文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -a 标签 -m &quot;&quot; commit ID</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看标签信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git show 标签</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -d 标签</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推送标签到远程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push 远程库 标签</span><br><span class="line">$ git push 远程库 --tags</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除远程标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -d 标签</span><br><span class="line">$ git push 远程库 :refs/tags/标签</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
         </div>
     
@@ -984,7 +1179,11 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/2018/03/26/hello-world/">Hello World</a>
+                <a class="footer-post" href="/2018/03/28/Vim笔记/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/28/GitNotes/">Untitled</a>
             </li>
             
             <li>
