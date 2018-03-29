@@ -10,8 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="BY：六一（技术大牛）
-
+        <meta name="description" content="作者: 六一（技术大牛）欢迎大家光临网站
 将文本记录转换为NumPy的解析程序将txt数据转换为numpy数组，将特征值与标签分离使用Matplotlib画图分析数据python 代码注释">
     
 
@@ -183,9 +182,7 @@
         
 
         <!-- Post Content -->
-        <ul>
-<li>BY：六一（技术大牛）</li>
-</ul>
+        <p><a href="https://liuyi12138.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">作者: 六一（技术大牛）欢迎大家光临网站</a></p>
 <p>将文本记录转换为NumPy的解析程序<br>将txt数据转换为numpy数组，将特征值与标签分离<br>使用Matplotlib画图分析数据<br>python 代码注释</p>
 <a id="more"></a>
 <h2 id="knn-py"><a href="#knn-py" class="headerlink" title="knn.py"></a>knn.py</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def file2matrix(filename):</span><br><span class="line"><span class="code">    fr = open(filename)</span></span><br><span class="line"><span class="code">    arrayOLines = fr.readlines() #读入所有行</span></span><br><span class="line"><span class="code">    numberOfLines = len(arrayOLines) #行数</span></span><br><span class="line"><span class="code">    returnMat = zeros((numberOfLines, 3))  #创建数组，数据集  zeros功能是返回一个m×n×p×...的double类零矩阵</span></span><br><span class="line"><span class="code">    classLabelVector = [] #标签集</span></span><br><span class="line"><span class="code">    index = 0</span></span><br><span class="line"><span class="code">    for line in arrayOLines:</span></span><br><span class="line"><span class="code">        line = line.strip()   #移除所有的回车符  strip函数见注释(1)</span></span><br><span class="line"><span class="code">        listFromLine = line.split('\t')  #把一个字符串按\t分割成字符串数组  split函数见注释(2)</span></span><br><span class="line"><span class="code">        returnMat[index,:] = listFromLine[0:3] #取listFromLine的前三个元素放入returnMat</span></span><br><span class="line"><span class="code">        classLabelVector.append(int(listFromLine[-1])) #选取listFromLine的最后一个元素依次存入classLabelVector列表中</span></span><br><span class="line"><span class="code">        index += 1</span></span><br><span class="line"><span class="code">    return returnMat, classLabelVector</span></span><br><span class="line"><span class="section">#datingDatamat为特征数据集，datingLabels为标签集</span></span><br><span class="line"></span><br><span class="line">datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')</span><br><span class="line"><span class="section">#datingTestSet2.txt文件中每行有4个数据，前三个为对象特征值，第四个为对象标签。</span></span><br></pre></td></tr></table></figure>

@@ -10,8 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="BY：六一（技术大牛）
-
+        <meta name="description" content="作者: 六一（技术大牛）欢迎大家光临网站
 最简单kNN算法实现python 代码注释">
     
 
@@ -183,9 +182,7 @@
         
 
         <!-- Post Content -->
-        <ul>
-<li>BY：六一（技术大牛）</li>
-</ul>
+        <p><a href="https://liuyi12138.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">作者: 六一（技术大牛）欢迎大家光临网站</a></p>
 <p>最简单kNN算法实现<br>python 代码注释</p>
 <a id="more"></a>
 <h2 id="knn-py"><a href="#knn-py" class="headerlink" title="knn.py"></a>knn.py</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *      #导入科学计算报numpy</span><br><span class="line">import operator          #导入运算符模块</span><br><span class="line"></span><br><span class="line">def createDataSet():</span><br><span class="line"><span class="code">	group = array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])</span></span><br><span class="line"><span class="code">    labels = ['A','A','B','B']</span></span><br><span class="line"><span class="code">    return group,labels</span></span><br><span class="line"></span><br><span class="line">def classify0(inX,dataSet,labels,k):	#inX是需要输入的坐标，dateSet是array,labels是标签，k是k个最邻近数据</span><br><span class="line"><span class="code">	dataSetSize = dataSet.shape[0]		#shape函数见注释(1)</span></span><br><span class="line"><span class="code">	diffMat = tile(inX,(dataSetSize,1)) - dataSet　　　#tile函数见注释(2)  此处求得两点坐标差值(矩阵形式)</span></span><br><span class="line"><span class="code">	sqDiffMat = diffMat**2		#坐标差值的平方</span></span><br><span class="line"><span class="code">	sqDistances = sqDiffMat.sum(axis = 1)	#sum函数见注释(3)  此处得出每一组的坐标差值平方的和</span></span><br><span class="line"><span class="code">	distances = sqDistances**0.5	#开方，得到距离</span></span><br><span class="line"><span class="code">	sortedDistIndicies = distances.argsort()	#rgsort函数见注释(4)　　此处将元素按照由小到大的顺序返回下标</span></span><br><span class="line"><span class="code">	classCount = &#123;&#125;</span></span><br><span class="line"><span class="code">	for i in range(k):</span></span><br><span class="line"><span class="code">		voteIlabel = labels[sortedDistIndicies[i]]</span></span><br><span class="line"><span class="code">		classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1	</span></span><br><span class="line"><span class="section">#get()函数返回指定键的值，如果值不在字典中返回默认值。这行代码的意思就是算离目标点距离最近的k个点的类别，这个点是哪个类别哪个类别就加1</span></span><br><span class="line"><span class="code">	sortedClassCount = sorted(classCount.iteritems(),key=operator.itemgetter(1),reverse=True) </span></span><br><span class="line"><span class="section">#sorted见注释(5) items方法是可以将字典中的所有项，以列表方式返回。 key=operator.itemgetter(1)的意思是按照字典里的第一个排序，</span></span><br><span class="line"><span class="code">    &#123;A:1,B:2&#125;,要按照第1个（AB是第0个），即‘1’‘2’排序。reverse=True是降序排序</span></span><br><span class="line"><span class="code">	return sortedClassCount[0][0]		#返回类别最多的类别</span></span><br></pre></td></tr></table></figure>

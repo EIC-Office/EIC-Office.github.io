@@ -10,8 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="BY：六一（技术大牛）
-
+        <meta name="description" content="作者: 六一（技术大牛）欢迎大家光临网站
 归一化特征值测试算法预测函数python 代码注释">
     
 
@@ -183,9 +182,7 @@
         
 
         <!-- Post Content -->
-        <ul>
-<li>BY：六一（技术大牛）</li>
-</ul>
+        <p><a href="https://liuyi12138.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">作者: 六一（技术大牛）欢迎大家光临网站</a></p>
 <p>归一化特征值<br>测试算法<br>预测函数<br>python 代码注释</p>
 <a id="more"></a>
 <h2 id="归一化特征值"><a href="#归一化特征值" class="headerlink" title="归一化特征值"></a>归一化特征值</h2><h3 id="knn-py"><a href="#knn-py" class="headerlink" title="knn.py"></a>knn.py</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def autoNorm(dataSet):</span><br><span class="line"><span class="code">    minVals = dataSet.min(0)	#找出样本集中的最小值</span></span><br><span class="line"><span class="code">    maxVals = dataSet.max(0)	#找出样本集中的最大值</span></span><br><span class="line"><span class="code">    ranges = maxVals - minVals	#最大最小值之间的差值</span></span><br><span class="line"><span class="code">    normDataSet = zeros(shape(dataSet))	#创建与样本集一样大小的零矩阵</span></span><br><span class="line"><span class="code">    m = dataSet.shape[0]</span></span><br><span class="line"><span class="code">    normDataSet = dataSet - tile(minVals, (m,1))	#样本集中的元素与最小值的差值</span></span><br><span class="line"><span class="code">    normDataSet = normDataSet/tile(ranges, (m,1))	#数据相除，归一化</span></span><br><span class="line"><span class="code">    return normDataSet, ranges, minVals</span></span><br></pre></td></tr></table></figure>
