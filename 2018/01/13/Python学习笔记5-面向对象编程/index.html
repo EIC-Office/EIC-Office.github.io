@@ -10,6 +10,10 @@
 
     <!--Description-->
     
+        <meta name="description" content="BY：六一（技术大牛）
+
+python与javascript的比较学习面向对象编程(OOP)">
+    
 
     <!--Author-->
     
@@ -18,7 +22,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="EIC-Office"/>
+        <meta property="og:title" content="Python学习笔记5--面向对象编程"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>VimNodes - EIC-Office</title>
+    <title>Python学习笔记5--面向对象编程 - EIC-Office</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +131,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,25 +139,84 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">#VimNodes</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2018/03/29/Vim笔记/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        VimNodes
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/13/Python学习笔记5-面向对象编程/">
+                Python学习笔记5--面向对象编程
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-13</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/学习笔记/">学习笔记</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
+<li>BY：六一（技术大牛）</li>
+</ul>
+<h3 id="python与javascript的比较学习"><a href="#python与javascript的比较学习" class="headerlink" title="python与javascript的比较学习"></a>python与javascript的比较学习</h3><h2 id="面向对象编程-OOP"><a href="#面向对象编程-OOP" class="headerlink" title="面向对象编程(OOP)"></a>面向对象编程(OOP)</h2><a id="more"></a>
+<h3 id="类和实例"><a href="#类和实例" class="headerlink" title="类和实例"></a>类和实例</h3><ul>
+<li>class Student(object):   －Student是类名，object表示该类是从哪个类继承下来的(如果没有合适的继承类，就使用object类，这是所有类最终都会继承的类)</li>
+<li>通过定义<code>__init__</code>方法绑定属性(创建实例的时不能传入空的参数必须传入与<code>__init__</code>方法匹配的参数,但self不需要传)</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Student(object):</span><br><span class="line"></span><br><span class="line"><span class="code">    def __init__(self, name, score):</span></span><br><span class="line"><span class="code">        self.name = name</span></span><br><span class="line"><span class="code">        self.score = score</span></span><br></pre></td></tr></table></figure>
+<h3 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h3><ul>
+<li>实例的变量名如果以<code>__</code>开头，就变成了一个私有变量,，只有内部可以访问，外部不能访问</li>
+<li>Python解释器对外把<code>__name</code>变量改成了<code>_Student__name</code>，所以，仍然可以通过<code>_Student__name</code>来访问<code>__name</code>变量</li>
+</ul>
+<h3 id="继承和多态"><a href="#继承和多态" class="headerlink" title="继承和多态"></a>继承和多态</h3><ul>
+<li>子类获得了父类的全部功能</li>
+<li>当子类和父类存在相同的方法时，子类的方法覆盖父类的方法</li>
+<li>多态对扩展开放，对修改封闭</li>
+</ul>
+<h3 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h3><ul>
+<li>可以使用isinstance()函数判断class类型</li>
+<li>如果要获得一个对象的所有属性和方法，可以使用dir()函数，它返回一个包含字符串的list</li>
+<li>测试该对象的属性<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; hasattr(obj, 'x') # 有属性'x'吗？</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; obj.x</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; hasattr(obj, 'y') # 有属性'y'吗？</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; setattr(obj, 'y', 19) # 设置一个属性'y'</span><br><span class="line">&gt;&gt;&gt; hasattr(obj, 'y') # 有属性'y'吗？</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; getattr(obj, 'y') # 获取属性'y'</span><br><span class="line">19</span><br><span class="line">&gt;&gt;&gt; obj.y # 获取属性'y'</span><br><span class="line">19</span><br><span class="line">&gt;&gt;&gt; getattr(obj, 'z', 404) # 获取属性'z'，如果不存在，返回默认值404</span><br><span class="line">404</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/Python/">#Python</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 

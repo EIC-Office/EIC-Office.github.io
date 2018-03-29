@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="BY：六一（技术大牛）
+
+python与javascript的比较学习函数式编程">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Mochor">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python学习笔记4--函数式编程"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="EIC-Office"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python学习笔记4--函数式编程 - EIC-Office</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/11/Python学习笔记4--高阶函数/">
+                Python学习笔记4--函数式编程
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-11</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/学习笔记/">学习笔记</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
+<li>BY：六一（技术大牛）</li>
+</ul>
+<h3 id="python与javascript的比较学习"><a href="#python与javascript的比较学习" class="headerlink" title="python与javascript的比较学习"></a>python与javascript的比较学习</h3><h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><a id="more"></a>
+<p>感觉基本和JavaScript的高阶函数一样，吓得我赶紧复习了一遍js<br><a href="https://liuyi12138.github.io/2017/12/22/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%92--%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener">复习传送门</a></p>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p><strong> 收回我刚刚的话，py和js的高阶函数只是看起来一样，其实区别贼大</strong></p>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><ul>
+<li>js中map的用法　－ r=arr.map(function) 得到一个新的arr</li>
+<li>py中map的用法　－ r=map(f,list) 得到一个Iterator</li>
+<li>list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9])) －因此在py中用list()函数让它把整个序列都计算出来并返回一个list</li>
+<li>js里方法较多，py里函数较多</li>
+<li>如果在py里像js一样使用map结果是’list’ object has no attribute ‘map’即py中list没有map方法，当然其他数据结构也没有，亲测</li>
+</ul>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><ul>
+<li>js中reduce的用法　－arr.reduce(function (x, y))</li>
+<li>py中reduce的用法　－reduce(fn, [1, 3, 5, 7, 9])</li>
+<li>完整用法<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from functools import reduce</span><br><span class="line">&gt;&gt;&gt; def add(x, y):</span><br><span class="line">...     return x + y</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; reduce(add, [1, 3, 5, 7, 9])</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><ul>
+<li>filter()函数返回的是一个Iterator，也就是一个惰性序列，所以要强迫filter()完成计算结果，需要用list()函数获得所有结果并返回list</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def is_odd(n):</span><br><span class="line"><span class="code">    return n % 2 == 1</span></span><br><span class="line"></span><br><span class="line">list(filter(is_odd, [1, 2, 4, 5, 6, 9, 10, 15]))</span><br></pre></td></tr></table></figure>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><ul>
+<li>Python内置的sorted()函数就可以对list进行排序</li>
+<li>sorted()函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序</li>
+<li>sorted([36, 5, -12, 9, -21], key=abs)  －按绝对值大小排序</li>
+<li>py貌似没有js的那种sort()方法默认把所有元素先转换为String再排序的问题</li>
+<li>要进行反向排序，不必改动key函数，可以传入第三个参数reverse=True</li>
+</ul>
+<hr>
+<h3 id="返回函数"><a href="#返回函数" class="headerlink" title="返回函数"></a>返回函数</h3><ul>
+<li>py中返回函数或等于js中的闭包</li>
+<li>返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量</li>
+<li><a href="https://liuyi12138.github.io/2017/12/22/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%92--%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener">js中的闭包</a></li>
+</ul>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><ul>
+<li>list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))</li>
+<li>匿名函数只能有一个表达式，只能返回该表达式的结果</li>
+<li>可以把匿名函数赋值给一个变量</li>
+<li>也可以把匿名函数作为返回值</li>
+</ul>
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><ul>
+<li>在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）</li>
+<li>decorator接受一个函数并返回一个函数</li>
+<li>@functools.wraps(func)　－将原始函数(func)的属性赋给新的函数</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.<span class="strong">__name__</span>  //函数对象有一个<span class="strong">__name__</span>属性，可以拿到函数的名字("<span class="emphasis">__"是两个"_</span>")</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Python time time() 返回当前时间的时间戳</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import functools  //import functools是导入functools模块</span><br><span class="line"></span><br><span class="line">def log(text):</span><br><span class="line"><span class="code">    def decorator(func):</span></span><br><span class="line"><span class="code">        @functools.wraps(func)</span></span><br><span class="line"><span class="code">        def wrapper(*args, **kw):</span></span><br><span class="line"><span class="code">            print('%s %s():' % (text, func.__name__))</span></span><br><span class="line"><span class="code">            return func(*args, **kw)</span></span><br><span class="line"><span class="code">        return wrapper</span></span><br><span class="line"><span class="code">    return decorator</span></span><br></pre></td></tr></table></figure>
+<h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><ul>
+<li>functools.partial的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单</li>
+<li><p>int2 = functools.partial(int, base=2)  －把int函数的base参数(做N进制的转换)固定为２(相当于加入kw = { ‘base’: 2 })<br><code>创建偏函数时，实际上可以接收函数对象、*args和**kw这3个参数</code></p>
+</li>
+<li><p>max2 = functools.partial(max, 10)  －10会作为*args的一部分自动加到左边</p>
+</li>
+</ul>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/Python/">#Python</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/29/Vim笔记/">VimNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/28/GitNotes/">GitNotes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/26/LinuxNodes/">LinuxNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/01/30/机器学习实战第四章朴素贝叶斯-1/">机器学习实战第四章朴素贝叶斯(1)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/机器学习/">机器学习</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/学习笔记/">学习笔记</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

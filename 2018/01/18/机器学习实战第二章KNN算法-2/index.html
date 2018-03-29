@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="BY：六一（技术大牛）
+
+将文本记录转换为NumPy的解析程序将txt数据转换为numpy数组，将特征值与标签分离使用Matplotlib画图分析数据python 代码注释">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Mochor">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="机器学习实战第二章KNN算法(2)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="EIC-Office"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>机器学习实战第二章KNN算法(2) - EIC-Office</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/18/机器学习实战第二章KNN算法-2/">
+                机器学习实战第二章KNN算法(2)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-18</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/机器学习/">机器学习</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
+<li>BY：六一（技术大牛）</li>
+</ul>
+<p>将文本记录转换为NumPy的解析程序<br>将txt数据转换为numpy数组，将特征值与标签分离<br>使用Matplotlib画图分析数据<br>python 代码注释</p>
+<a id="more"></a>
+<h2 id="knn-py"><a href="#knn-py" class="headerlink" title="knn.py"></a>knn.py</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def file2matrix(filename):</span><br><span class="line"><span class="code">    fr = open(filename)</span></span><br><span class="line"><span class="code">    arrayOLines = fr.readlines() #读入所有行</span></span><br><span class="line"><span class="code">    numberOfLines = len(arrayOLines) #行数</span></span><br><span class="line"><span class="code">    returnMat = zeros((numberOfLines, 3))  #创建数组，数据集  zeros功能是返回一个m×n×p×...的double类零矩阵</span></span><br><span class="line"><span class="code">    classLabelVector = [] #标签集</span></span><br><span class="line"><span class="code">    index = 0</span></span><br><span class="line"><span class="code">    for line in arrayOLines:</span></span><br><span class="line"><span class="code">        line = line.strip()   #移除所有的回车符  strip函数见注释(1)</span></span><br><span class="line"><span class="code">        listFromLine = line.split('\t')  #把一个字符串按\t分割成字符串数组  split函数见注释(2)</span></span><br><span class="line"><span class="code">        returnMat[index,:] = listFromLine[0:3] #取listFromLine的前三个元素放入returnMat</span></span><br><span class="line"><span class="code">        classLabelVector.append(int(listFromLine[-1])) #选取listFromLine的最后一个元素依次存入classLabelVector列表中</span></span><br><span class="line"><span class="code">        index += 1</span></span><br><span class="line"><span class="code">    return returnMat, classLabelVector</span></span><br><span class="line"><span class="section">#datingDatamat为特征数据集，datingLabels为标签集</span></span><br><span class="line"></span><br><span class="line">datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')</span><br><span class="line"><span class="section">#datingTestSet2.txt文件中每行有4个数据，前三个为对象特征值，第四个为对象标签。</span></span><br></pre></td></tr></table></figure>
+<h2 id="注释部分"><a href="#注释部分" class="headerlink" title="注释部分"></a>注释部分</h2><h3 id="1-strip函数"><a href="#1-strip函数" class="headerlink" title="1.strip函数"></a>1.strip函数</h3><p>函数原型<br>声明：s为字符串，rm为要删除的字符序列<br>s.strip(rm)        删除s字符串中开头、结尾处，位于 rm删除序列的字符<br>s.lstrip(rm)       删除s字符串中开头处，位于 rm删除序列的字符<br>s.rstrip(rm)      删除s字符串中结尾处，位于 rm删除序列的字符</p>
+<p><strong>当rm为空时，默认删除空白符（包括’\n’, ‘\r’,  ‘\t’,  ‘ ‘)</strong><br><strong>这里的rm删除序列是只要边（开头或结尾）上的字符在删除序列内，就删除掉。</strong></p>
+<h3 id="2-split函数"><a href="#2-split函数" class="headerlink" title="2.split函数"></a>2.split函数</h3><h4 id="split-就是将一个字符串分裂成多个字符串组成的列表"><a href="#split-就是将一个字符串分裂成多个字符串组成的列表" class="headerlink" title="split()就是将一个字符串分裂成多个字符串组成的列表"></a>split()就是将一个字符串分裂成多个字符串组成的列表</h4><ul>
+<li>split()当不带参数时以空格进行分割，当代参数时，以该参数进行分割</li>
+<li>split()会分出空字符元素<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; str="hello boy&lt;[www.doiido.com]&gt;byebye"</span><br><span class="line">&gt;&gt;&gt; str.split("[")[1].split("]")[0]</span><br><span class="line">'www.doiido.com'</span><br><span class="line">&gt;&gt;&gt; str.split("[")[1].split("]")[0].split(".")</span><br><span class="line">['www', 'doiido', 'com']</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="使用Matplotlib画图分析数据"><a href="#使用Matplotlib画图分析数据" class="headerlink" title="使用Matplotlib画图分析数据"></a>使用Matplotlib画图分析数据</h2><p><strong>暂时不懂贴上代码</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import numpy</span><br><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import knn</span><br><span class="line">reload(knn)</span><br><span class="line">datingDataMat,datingLabels=kNN.file2matrix('datingTestSet2.txt')</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(111)</span><br><span class="line">ax.scatter(datingDataMat[:,1],datingDataMat[:,2],15.0<span class="emphasis">*array(datingLabels),15.0*</span>array(datingLabels))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><p><a href="http://blog.csdn.net/werm520/article/details/6898473" target="_blank" rel="noopener">python中的读入操作</a></p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/机器学习实战/">#机器学习实战</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/29/Vim笔记/">VimNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/28/GitNotes/">GitNotes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/26/LinuxNodes/">LinuxNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/01/30/机器学习实战第四章朴素贝叶斯-1/">机器学习实战第四章朴素贝叶斯(1)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/机器学习/">机器学习</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/学习笔记/">学习笔记</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

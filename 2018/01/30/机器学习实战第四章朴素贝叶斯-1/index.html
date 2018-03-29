@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="BY：六一（技术大牛）
+
+朴素贝叶斯实现文本分类python 代码注释">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Mochor">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="机器学习实战第四章朴素贝叶斯(1)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="EIC-Office"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>机器学习实战第四章朴素贝叶斯(1) - EIC-Office</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/30/机器学习实战第四章朴素贝叶斯-1/">
+                机器学习实战第四章朴素贝叶斯(1)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-30</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/机器学习/">机器学习</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
+<li>BY：六一（技术大牛）</li>
+</ul>
+<p>朴素贝叶斯实现文本分类<br>python 代码注释</p>
+<a id="more"></a>
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">from numpy import*</span><br><span class="line">def loadDataSet():</span><br><span class="line"><span class="code">    postingList = [['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],</span></span><br><span class="line"><span class="code">                   ['maybe', 'not', 'take', 'him', 'to', 'dog', 'park', 'stupid'],</span></span><br><span class="line"><span class="code">                   ['my', 'dalmation', 'is', 'so', 'cute', 'I', 'love', 'him'],</span></span><br><span class="line"><span class="code">                   ['stop', 'posting', 'stupid', 'wprthless', 'garbage'],</span></span><br><span class="line"><span class="code">                   ['mr', 'licks', 'ate', 'my', 'steak', 'how', 'to', 'stop', 'him'],</span></span><br><span class="line"><span class="code">                   ['quit', 'buying', 'worthless', 'dog', 'food', 'stupid']] #进行词条切分后的文档集合</span></span><br><span class="line"><span class="code">    classVec = [0, 1, 0, 1, 0, 1] #1表示侮辱性文字，0表示正常言论</span></span><br><span class="line"><span class="code">    return postingList, classVec</span></span><br><span class="line"></span><br><span class="line">def createVocabList(dataSet):</span><br><span class="line"><span class="code">    vocabSet = set([]) #创建一个空集</span></span><br><span class="line"><span class="code">    for document in dataSet:</span></span><br><span class="line"><span class="code">        vocabSet = vocabSet | set(document) #通过并集操作将数据传入set，并且这是一个无重复集合</span></span><br><span class="line"><span class="code">    return list(vocabSet)</span></span><br><span class="line"></span><br><span class="line">def setOfWords2Vec(vocabSet,inputSet):     #vocabSet词汇表，inputSet输入文档</span><br><span class="line"><span class="code">    returnVec=[0]*len(vocabSet) #创建0向量</span></span><br><span class="line"><span class="code">    for word in inputSet:</span></span><br><span class="line"><span class="code">        if word in vocabSet:</span></span><br><span class="line"><span class="code">            returnVec[vocabSet.index(word)] = 1</span></span><br><span class="line"><span class="code">        else:</span></span><br><span class="line"><span class="code">            print("The word :%s is not in the vocabulary!" % word)</span></span><br><span class="line"><span class="code">    return returnVec</span></span><br><span class="line"></span><br><span class="line">def trainNb0(trainMatrix,trainCategory): #trainMatrix文档矩阵 trainCategory标签向量</span><br><span class="line"><span class="code">    numTrainDocs = len(trainMatrix)</span></span><br><span class="line"><span class="code">    numWords = len(trainMatrix[0])</span></span><br><span class="line"><span class="code">    pAbusive = sum(trainCategory) / float(numTrainDocs) #P(C1) P(C2)=1-P(C1)</span></span><br><span class="line"><span class="code">    p0Num = ones(numWords)</span></span><br><span class="line"><span class="code">    p1Num = ones(numWords)</span></span><br><span class="line"><span class="code">    p0Denom=2.0 ; p1Denom=2.0</span></span><br><span class="line"><span class="code">    for i in range(numTrainDocs):</span></span><br><span class="line"><span class="code">        if trainCategory[i]==1:</span></span><br><span class="line"><span class="code">            p1Num +=trainMatrix[i] #p1Num 词向量的向量相加</span></span><br><span class="line"><span class="code">            p1Denom += sum(trainMatrix[i]) #p1Denom  标签向量相加</span></span><br><span class="line"><span class="code">        else:</span></span><br><span class="line"><span class="code">            p0Num += trainMatrix[i]</span></span><br><span class="line"><span class="code">            p0Denom += sum(trainMatrix[i])</span></span><br><span class="line"><span class="code">    p1Vest = log(p1Num/p1Denom) #P(w|1)</span></span><br><span class="line"><span class="code">    p0Vest = log(p0Num/p0Denom) #P(W|0)</span></span><br><span class="line"><span class="code">    return p0Vest,p1Vest,pAbusive</span></span><br><span class="line"></span><br><span class="line">import bayes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def classifyNB(vec2Classify,p0Vec,p1Vec,pClass1):</span><br><span class="line"><span class="code">    p1 = sum(vec2Classify * p1Vec) + log(pClass1)</span></span><br><span class="line"><span class="code">    p0 = sum(vec2Classify * p0Vec) + log(1.0-pClass1)</span></span><br><span class="line"><span class="code">    if p1&gt;p0:</span></span><br><span class="line"><span class="code">        return 1</span></span><br><span class="line"><span class="code">    else:</span></span><br><span class="line"><span class="code">        return 0</span></span><br><span class="line"></span><br><span class="line">def testingNB():    #训练及使用分类器</span><br><span class="line"><span class="code">    listOposts,listClasses=bayes.loadDataSet()</span></span><br><span class="line"><span class="code">    myVocabList=bayes.createVocabList(listOposts)</span></span><br><span class="line"><span class="code">    trainMat=[]</span></span><br><span class="line"><span class="code">    for postinDoc in listOposts:</span></span><br><span class="line"><span class="code">        trainMat.append(bayes.setOfWords2Vec(myVocabList,postinDoc))</span></span><br><span class="line"><span class="code">    p0V,p1V,pAb=bayes.trainNb0(trainMat,listClasses)</span></span><br><span class="line"><span class="code">    testEntry=['love','my','dalmation']</span></span><br><span class="line"><span class="code">    thisDoc = array(setOfWords2Vec(myVocabList,testEntry))</span></span><br><span class="line"><span class="code">    print (testEntry, 'the classified as: ', classifyNB(thisDoc, p0V, p1V, pAb))</span></span><br></pre></td></tr></table></figure>
+<h2 id="注释部分"><a href="#注释部分" class="headerlink" title="注释部分"></a>注释部分</h2><h3 id="1-Python-集合set-添加删除、交集、并集、集合操作"><a href="#1-Python-集合set-添加删除、交集、并集、集合操作" class="headerlink" title="1.Python 集合set()添加删除、交集、并集、集合操作"></a>1.Python 集合set()添加删除、交集、并集、集合操作</h3><ul>
+<li>a=set(‘boy’) –创建set</li>
+<li>a.add(‘python’) –添加</li>
+<li>a.update(‘python’) –把传入的元素拆分，作为个体传入</li>
+<li>a.remove(‘python’) –删除</li>
+<li><img src="https://raw.githubusercontent.com/liuyi12138/Dian_training/master/picture/ML/1.30.1.jpg" alt="集合操作"></li>
+</ul>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/机器学习实战/">#机器学习实战</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/29/Vim笔记/">VimNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/28/GitNotes/">GitNotes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/26/LinuxNodes/">LinuxNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/01/30/机器学习实战第四章朴素贝叶斯-1/">机器学习实战第四章朴素贝叶斯(1)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/机器学习/">机器学习</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/学习笔记/">学习笔记</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="BY：六一（技术大牛）
+
+最简单kNN算法实现python 代码注释">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Mochor">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="机器学习实战第二章KNN算法(1)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="EIC-Office"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>机器学习实战第二章KNN算法(1) - EIC-Office</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/16/机器学习实战第二章KNN算法-1/">
+                机器学习实战第二章KNN算法(1)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-01-16</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/机器学习/">机器学习</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
+<li>BY：六一（技术大牛）</li>
+</ul>
+<p>最简单kNN算法实现<br>python 代码注释</p>
+<a id="more"></a>
+<h2 id="knn-py"><a href="#knn-py" class="headerlink" title="knn.py"></a>knn.py</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *      #导入科学计算报numpy</span><br><span class="line">import operator          #导入运算符模块</span><br><span class="line"></span><br><span class="line">def createDataSet():</span><br><span class="line"><span class="code">	group = array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])</span></span><br><span class="line"><span class="code">    labels = ['A','A','B','B']</span></span><br><span class="line"><span class="code">    return group,labels</span></span><br><span class="line"></span><br><span class="line">def classify0(inX,dataSet,labels,k):	#inX是需要输入的坐标，dateSet是array,labels是标签，k是k个最邻近数据</span><br><span class="line"><span class="code">	dataSetSize = dataSet.shape[0]		#shape函数见注释(1)</span></span><br><span class="line"><span class="code">	diffMat = tile(inX,(dataSetSize,1)) - dataSet　　　#tile函数见注释(2)  此处求得两点坐标差值(矩阵形式)</span></span><br><span class="line"><span class="code">	sqDiffMat = diffMat**2		#坐标差值的平方</span></span><br><span class="line"><span class="code">	sqDistances = sqDiffMat.sum(axis = 1)	#sum函数见注释(3)  此处得出每一组的坐标差值平方的和</span></span><br><span class="line"><span class="code">	distances = sqDistances**0.5	#开方，得到距离</span></span><br><span class="line"><span class="code">	sortedDistIndicies = distances.argsort()	#rgsort函数见注释(4)　　此处将元素按照由小到大的顺序返回下标</span></span><br><span class="line"><span class="code">	classCount = &#123;&#125;</span></span><br><span class="line"><span class="code">	for i in range(k):</span></span><br><span class="line"><span class="code">		voteIlabel = labels[sortedDistIndicies[i]]</span></span><br><span class="line"><span class="code">		classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1	</span></span><br><span class="line"><span class="section">#get()函数返回指定键的值，如果值不在字典中返回默认值。这行代码的意思就是算离目标点距离最近的k个点的类别，这个点是哪个类别哪个类别就加1</span></span><br><span class="line"><span class="code">	sortedClassCount = sorted(classCount.iteritems(),key=operator.itemgetter(1),reverse=True) </span></span><br><span class="line"><span class="section">#sorted见注释(5) items方法是可以将字典中的所有项，以列表方式返回。 key=operator.itemgetter(1)的意思是按照字典里的第一个排序，</span></span><br><span class="line"><span class="code">    &#123;A:1,B:2&#125;,要按照第1个（AB是第0个），即‘1’‘2’排序。reverse=True是降序排序</span></span><br><span class="line"><span class="code">	return sortedClassCount[0][0]		#返回类别最多的类别</span></span><br></pre></td></tr></table></figure>
+<h2 id="注释部分"><a href="#注释部分" class="headerlink" title="注释部分"></a>注释部分</h2><h3 id="1-shape函数"><a href="#1-shape函数" class="headerlink" title="1.shape函数"></a>1.shape函数</h3><h4 id="shape函数是numpy-core-fromnumeric中的函数，它的功能是查看矩阵或者数组的维数。"><a href="#shape函数是numpy-core-fromnumeric中的函数，它的功能是查看矩阵或者数组的维数。" class="headerlink" title="shape函数是numpy.core.fromnumeric中的函数，它的功能是查看矩阵或者数组的维数。"></a>shape函数是numpy.core.fromnumeric中的函数，它的功能是查看矩阵或者数组的维数。</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; e = eye(3)</span><br><span class="line">&gt;&gt;&gt; e</span><br><span class="line">array([[ 1.,  0.,  0.],</span><br><span class="line"><span class="code">       [ 0.,  1.,  0.],</span></span><br><span class="line"><span class="code">       [ 0.,  0.,  1.]])</span></span><br><span class="line">&gt;&gt;&gt; e.shape</span><br><span class="line">(3, 3)</span><br></pre></td></tr></table></figure>
+<h3 id="2-tile函数"><a href="#2-tile函数" class="headerlink" title="2.tile函数"></a>2.tile函数</h3><h4 id="tile函数也是numpy中的函数，用来重复矩阵"><a href="#tile函数也是numpy中的函数，用来重复矩阵" class="headerlink" title="tile函数也是numpy中的函数，用来重复矩阵"></a>tile函数也是numpy中的函数，用来重复矩阵</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import numpy</span><br><span class="line">&gt;&gt;&gt; numpy.tile([0,0],5)#在列方向上重复[0,0]5次，默认行1次</span><br><span class="line">array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</span><br><span class="line">&gt;&gt;&gt; numpy.tile([0,0],(1,1))#在列方向上重复[0,0]1次，行1次</span><br><span class="line">array([[0, 0]])</span><br><span class="line">&gt;&gt;&gt; numpy.tile([0,0],(2,1))#在列方向上重复[0,0]1次，行2次</span><br><span class="line">array([[0, 0],</span><br><span class="line"><span class="code">       [0, 0]])</span></span><br><span class="line">&gt;&gt;&gt; numpy.tile([0,0],(3,1))</span><br><span class="line">array([[0, 0],</span><br><span class="line"><span class="code">       [0, 0],</span></span><br><span class="line"><span class="code">       [0, 0]])</span></span><br><span class="line">&gt;&gt;&gt; numpy.tile([0,0],(1,3))#在列方向上重复[0,0]3次，行1次</span><br><span class="line">array([[0, 0, 0, 0, 0, 0]])</span><br><span class="line">&gt;&gt;&gt; numpy.tile([0,0],(2,3))#在列方向上重复[0,0]3次，行2次</span><br><span class="line">array([[0, 0, 0, 0, 0, 0],</span><br><span class="line"><span class="code">       [0, 0, 0, 0, 0, 0]])</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-sum函数"><a href="#3-sum函数" class="headerlink" title="3.sum函数"></a>3.sum函数</h3><h4 id="numpy中的sum与python本身的sum多了一个参数axis-axis＝0表示按列相加，axis＝1表示按照行的方向相加"><a href="#numpy中的sum与python本身的sum多了一个参数axis-axis＝0表示按列相加，axis＝1表示按照行的方向相加" class="headerlink" title="numpy中的sum与python本身的sum多了一个参数axis,axis＝0表示按列相加，axis＝1表示按照行的方向相加"></a>numpy中的sum与python本身的sum多了一个参数axis,axis＝0表示按列相加，axis＝1表示按照行的方向相加</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import numpy as np</span><br><span class="line">&gt;&gt;&gt; a=np.sum([[0,1,2],[2,1,3]])</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">9</span><br><span class="line">&gt;&gt;&gt; a.shape</span><br><span class="line">()</span><br><span class="line">&gt;&gt;&gt; a=np.sum([[0,1,2],[2,1,3]],axis=0)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([2, 2, 5])</span><br><span class="line">&gt;&gt;&gt; a.shape</span><br><span class="line">(3,)</span><br><span class="line">&gt;&gt;&gt; a=np.sum([[0,1,2],[2,1,3]],axis=1)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([3, 6])</span><br><span class="line">&gt;&gt;&gt; a.shape</span><br><span class="line">(2,)</span><br></pre></td></tr></table></figure>
+<h3 id="4-argsort函数"><a href="#4-argsort函数" class="headerlink" title="4.argsort函数"></a>4.argsort函数</h3><h4 id="numpy中的argsort函数将元素按照由小到大的顺序返回下标"><a href="#numpy中的argsort函数将元素按照由小到大的顺序返回下标" class="headerlink" title="numpy中的argsort函数将元素按照由小到大的顺序返回下标"></a>numpy中的argsort函数将元素按照由小到大的顺序返回下标</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">   One dimensional array:一维数组</span><br><span class="line"></span><br><span class="line">   &gt;&gt;&gt; x = np.array([3, 1, 2])</span><br><span class="line">   &gt;&gt;&gt; np.argsort(x)</span><br><span class="line">   array([1, 2, 0])</span><br><span class="line"></span><br><span class="line">Two-dimensional array:二维数组</span><br><span class="line"></span><br><span class="line">   &gt;&gt;&gt; x = np.array([[0, 3], [2, 2]])</span><br><span class="line">   &gt;&gt;&gt; x</span><br><span class="line">   array([[0, 3],</span><br><span class="line"><span class="code">          [2, 2]])</span></span><br><span class="line"></span><br><span class="line">   &gt;&gt;&gt; np.argsort(x, axis=0) #按列排序</span><br><span class="line">   array([[0, 1],</span><br><span class="line"><span class="code">          [1, 0]])</span></span><br><span class="line"></span><br><span class="line">   &gt;&gt;&gt; np.argsort(x, axis=1) #按行排序</span><br><span class="line">   array([[0, 1],</span><br><span class="line"><span class="code">          [0, 1]])</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-sorted函数"><a href="#5-sorted函数" class="headerlink" title="5.sorted函数"></a>5.sorted函数</h3><p>sortedClassCount = sorted(classCount.iteritems(),key=operator.itemgetter(1),reverse=True)</p>
+<p>iterable：是可迭代类型;<br>cmp：用于比较的函数，比较什么由key决定;<br>key：用列表元素的某个属性或函数进行作为关键字，有默认值，迭代集合中的一项;<br>reverse：排序规则. reverse = True  降序 或者 reverse = False 升序，有默认值。<br>返回值：是一个经过排序的可迭代类型，与iterable一样。</p>
+<hr>
+<h3 id="错误解决"><a href="#错误解决" class="headerlink" title="错误解决"></a>错误解决</h3><p>sortedClassCount = sorted(classCount.iteritems(),key=operator.itemgetter(1),reverse=True)<br>在看机器学习实战的时候 KNN.py的时候会出现报错’dict’ object has no attribute ‘iteritems’</p>
+<p>解决方法：Python3.5中：iteritems变为items</p>
+<h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><p><a href="http://blog.csdn.net/u013731339/article/details/41449177" target="_blank" rel="noopener">python中的常用排序</a><br><a href="http://blog.csdn.net/yedoubushishen/article/details/51984524" target="_blank" rel="noopener">python字典的get函数和iteritems函数</a></p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/机器学习实战/">#机器学习实战</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/29/Vim笔记/">VimNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/28/GitNotes/">GitNotes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/26/LinuxNodes/">LinuxNodes</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/01/30/机器学习实战第四章朴素贝叶斯-1/">机器学习实战第四章朴素贝叶斯(1)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/机器学习/">机器学习</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/学习笔记/">学习笔记</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
